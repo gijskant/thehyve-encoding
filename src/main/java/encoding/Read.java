@@ -8,6 +8,21 @@ import encoding.PairSequence.Element;
 
 public class Read {
 
+	static void flushEncoder(Encoder encoder) {
+		while (encoder.hasNext()) {
+			Element e = encoder.next();
+			if (e == null) {
+				System.out.println("Error.");
+				break;
+			}
+			try {
+				System.err.write(e.bytes());
+			} catch (IOException e1) {
+				System.out.println("Error writing to stderr.");
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		InputStream input = System.in;
 		ElementReader reader = new ElementReader(input);
@@ -31,6 +46,7 @@ public class Read {
         } else {
         	encoder = new SmartEncoder();
         }
+        int count = 0;
 		while (sequence.hasNext()) {
 			byte[] bytes = sequence.next();
 			try {
@@ -39,19 +55,12 @@ public class Read {
 				System.out.println("Error writing to stdout.");
 			}
 			encoder.add(bytes);
-			while (encoder.hasNext()) {
-				Element e = encoder.next();
-				if (e == null) {
-					System.out.println("Error.");
-					break;
-				}
-				try {
-					System.err.write(e.bytes());
-				} catch (IOException e1) {
-					System.out.println("Error writing to stderr.");
-				}
+			if (count > 100) {
+				flushEncoder(encoder);
+				count = 0;
 			}
 		}
+		flushEncoder(encoder);
 	}
 
 }
