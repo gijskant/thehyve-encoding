@@ -22,10 +22,7 @@ java -cp encoding-0.0.1.jar encoding.Read < test2.in >test2.out 2>test2.err
 ```
 and check the results in `test2.out` and `test2.err`:
 ```
-echo "in:"
 od -An -tx1 < test2.in
-echo "out:"
 od -An -tx1 < test2.out
-echo "err:"
 od -An -tx1 < test2.err
 ```
