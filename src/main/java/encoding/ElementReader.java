@@ -51,8 +51,8 @@ public class ElementReader implements Iterator<Element> {
 			System.out.println("Error reading from stream.");
 			return null;
 		} catch (InvalidLookback e) {
-			error = true;
-			System.out.printf("Error in input: %s.\n", e.getMessage());
+			//error = true;
+			//System.out.printf("Error in input: %s.\n", e.getMessage());
 			return null;
 		}
 	}

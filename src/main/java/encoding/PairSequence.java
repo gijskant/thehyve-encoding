@@ -132,32 +132,29 @@ public class PairSequence implements Iterator<byte[]> {
 
 	History history;
 	ElementReader reader;
-	boolean error;
 	
 	public PairSequence(ElementReader reader) {
 		int capacity = 1 << Byte.SIZE; // 2^8
 		this.history = new History(capacity);
 		this.reader = reader;
-		this.error = false;
 	}
 
 	public boolean hasNext() {
-		return (!error && reader.hasNext());
+		return (reader.hasNext());
 	}
 
 	public byte[] next() {
 		Element e = reader.next();
 		if (e == null) {
-			error = true;
-			return new byte[] {};
+			return new byte[] {0x3f};
 		}
 		byte[] result;
 		try {
 			result = e.decode(history);
 		} catch (InvalidLookback e1) {
-			error = true;
-			System.out.printf("Error in input, invalid pair: %s.\n", e1.getMessage());
-			return null;
+			//System.out.printf("Error in input, invalid pair: %s.\n", e1.getMessage());
+			//return null;
+			return new byte[] {0x3f};
 		}
 		history.add(result);
 		return result;
