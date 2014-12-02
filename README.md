@@ -31,7 +31,7 @@ od -An -tx1 < test2.out
 od -An -tx1 < test2.err
 ```
 
-The file `test3.in` was created with `printf '\000a\000b\000a\000b\000c\000a' > test2.in`. Run
+The file `test3.in` was created with `printf '\000a\000b\000a\000b\000c\000a' > test3.in`. Run
 ```
 java -cp encoding-0.0.1.jar encoding.Read < test3.in >test3.out 2>test3.err
 ```
