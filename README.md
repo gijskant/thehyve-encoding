@@ -12,9 +12,15 @@ Run
 In `target`, run, e.g., the following commands:
 
 ```
-java -cp encoding-0.0.1.jar encoding.Read < test1.in
+java -cp encoding-0.0.1.jar encoding.Read < test1.in >test1.out 2>test.err
 ```
-It will give an error, as `test1.in` contains `ab`, without the required `0` byte.
+The file `test1.in` contains `ab`, which is invalid input (there should be a `0` byte first).
+It will output a stream of `\3f` characters:
+```
+od -An -tx1 < test1.in
+od -An -tx1 < test1.out
+od -An -tx1 < test1.err
+```
 
 The file `test2.in` was created with `printf '\000a\000b' > test2.in`. Run
 ```
