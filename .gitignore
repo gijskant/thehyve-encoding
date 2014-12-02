@@ -1,0 +1,15 @@
+/target/classes/encoding/ElementReader.class
+/target/classes/encoding/Encoder.class
+/target/classes/encoding/PairSequence$Character.class
+/target/classes/encoding/PairSequence.class
+/target/classes/encoding/PairSequence$Element.class
+/target/classes/encoding/PairSequence$History.class
+/target/classes/encoding/PairSequence$InvalidLookback.class
+/target/classes/encoding/PairSequence$Lookback.class
+/target/classes/encoding/Read.class
+/target/classes/encoding/SimpleEncoder.class
+/target/encoding-0.0.1.jar
+/target/maven-archiver/pom.properties
+/target/surefire-reports/encoding.EncodingTest.txt
+/target/surefire-reports/TEST-encoding.EncodingTest.xml
+/target/test-classes/encoding/EncodingTest.class
