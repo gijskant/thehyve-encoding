@@ -13,3 +13,4 @@
 /target/surefire-reports/encoding.EncodingTest.txt
 /target/surefire-reports/TEST-encoding.EncodingTest.xml
 /target/test-classes/encoding/EncodingTest.class
+/target/classes/encoding/SmartEncoder.class
