@@ -69,6 +69,50 @@ public class EncodingTest {
 		}
 	}
 
-	
-	
+	@Test
+	public void testSmartEncoderSimpleCase() {
+		System.out.println("testSmartEncoderSimpleCase");
+		byte[] bytes = new byte[] {1, 2, 3, 4};
+		Encoder encoder = new SmartEncoder();
+		encoder.add(bytes);
+		byte i = 1;
+		while (encoder.hasNext()) {
+			Element e = encoder.next();
+			byte[] output = e.bytes();
+			assertSame(2, output.length);
+			if (output.length == 2) {
+				System.out.printf("Output: (%d, %d)\n", output[0], output[1]);
+				assertSame((byte)0, output[0]);
+				assertSame(i, output[1]);
+			}
+			i++;
+		}
+	}
+
+	@Test
+	public void testSmartEncoderRepetitionCase() {
+		System.out.println("testSmartEncoderRepetitionCase");
+		byte[] bytes = new byte[] {1, 2, 3, 4, 1, 2, 3, 4};
+		Encoder encoder = new SmartEncoder();
+		encoder.add(bytes);
+		byte i = 1;
+		while (encoder.hasNext()) {
+			Element e = encoder.next();
+			byte[] output = e.bytes();
+			assertSame(2, output.length);
+			if (output.length == 2) {
+				System.out.printf("Output: (%d, %d)\n", output[0], output[1]);
+				if (i < 5) {
+					assertSame((byte)0, output[0]);
+					assertSame(i, output[1]);
+				} else {
+					assertSame((byte)4, output[0]);
+					assertSame((byte)4, output[1]);
+				}
+				
+			}
+			i++;
+		}
+	}
+		
 }
