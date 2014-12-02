@@ -74,6 +74,9 @@ public class PairSequence implements Iterator<byte[]> {
 					result[j] = b;
 					j++;
 				}
+				if (j == number) {
+					break;
+				}
 				i++;
 			}
 			return result;
