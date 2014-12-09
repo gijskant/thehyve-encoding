@@ -59,7 +59,7 @@ public class SmartEncoder implements Encoder {
 			int offset = 1;
 			Iterator<Byte> it = history.iterator();
 			boolean lookupSuccess = false;
-			while (it.hasNext()) {
+			while (!lookupSuccess && it.hasNext()) {
 				byte b2 = it.next();
 				//System.out.printf("(Considering %d (offset: %d)\n", b2, offset);
 				if (b1 != b2) {
